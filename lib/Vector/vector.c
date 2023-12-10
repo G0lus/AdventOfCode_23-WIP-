@@ -85,20 +85,20 @@ bool vector_remove(vector* handle, size_t index, size_t n){
     if(handle == NULL){
         return false;
     }
-    if(index + n > handle->capacity){
-        n = handle->capacity - index;
+    if(index + n > handle->size){
+        n = handle->size - index;
     }
 
 /* Removing at index and shift all data by 1 to the left. */
-    for(size_t i = 0; i < n; i++){
-        if((index + n + i) > handle->capacity){
-            handle->data[index] = 0;
+    for(size_t i = 0; i < index + n; i++){
+        if(i == handle->size){
+            handle->data[i] = 0;
         }else{
-            handle->data[index] = handle->data[index + n + i];
+            handle->data[i] = handle->data[i+n];
         }
     }
 
-    handle->capacity -= n;
+    handle->size -= n;
     return true;
 }
 
