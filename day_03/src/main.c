@@ -27,9 +27,13 @@ int main(int argc, char** argv){
     rewind(input);
 
     char *data = calloc(data_len, sizeof(char));
-
-    fread(data, data_len, data_len, input);
-    size_t (*func_to_run)(const char*);
+    if(data == NULL){
+        printf("Could not allocate that much data %ld\n", data_len);
+        return EXIT_FAILURE;
+    }
+    fread(data, sizeof(char), data_len, input);
+    
+    size_t (*func_to_run)(size_t, const char*);
     if(*argv[1] == '1'){
         func_to_run = part1;
     }else if(*argv[1] == '2'){
@@ -39,7 +43,7 @@ int main(int argc, char** argv){
         return EXIT_FAILURE;
     }
 
-    unsigned long long int sum = func_to_run(data);
+    unsigned long long int sum = func_to_run(data_len, data);
     free(data);
     printf("%lld\n", sum);
     fclose(input);

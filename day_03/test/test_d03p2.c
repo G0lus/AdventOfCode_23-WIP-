@@ -16,8 +16,7 @@ int main(int argc, char** argv){
 ......755.\n\
 ...$.*....\n\
 .664.598..";
-    
-    size_t ret = part1(110, str);
-    assert(ret == 4361);
+    long int ret = part2(110, str);
+    assert(ret == 467835);
     return 0;
 }

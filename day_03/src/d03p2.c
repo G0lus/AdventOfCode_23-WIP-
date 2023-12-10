@@ -19,7 +19,7 @@
  * Left / Right
  * Bottom Left / Bottom / Bottom Right
 */
-#define ADJACENT_NUMS_MAX 8
+#define ADJACENT_NUMS_MAX 2
 #define SYMBOL_PERIMETER_X 1
 #define SYMBOL_PERIMETER_Y 1
 
@@ -107,7 +107,7 @@ static void look_for_adjacent(vector* vec, coordinates symbol_cords, unsigned lo
  *      Everytime symbol is found, vector of numbers is checked for validation.
 */
 
-size_t part1(size_t data_len, const char str[static data_len]){
+size_t part2(size_t data_len, const char str[static data_len]){
     /* Count chars in line */
     size_t line_len_cnt = 0;
     /* Count lines */
@@ -153,20 +153,10 @@ size_t part1(size_t data_len, const char str[static data_len]){
             unsigned long adjacent_nums[ADJACENT_NUMS_MAX] = {0};
             look_for_adjacent(vec, symbol_cords, adjacent_nums);
             printf("Number adjacent to symbol %c{%ld;%ld}: ", ch, symbol_cords.x, symbol_cords.y);
-            for(size_t n = 0; n < ADJACENT_NUMS_MAX; n++){
-                printf("%ld \t", adjacent_nums[n]);
-                total_sum += adjacent_nums[n];
-            }
+            printf("%ld \t %ld", adjacent_nums[0], adjacent_nums[1]);
             printf("\n");
+            total_sum += adjacent_nums[0] * adjacent_nums[1];
         }
     }
-
-
-
-    for(size_t i = 0; i < vector_get_size(vec); i++){
-        number* num = vector_get(vec, i); 
-        free(num);
-    }
-    vector_deinit(vec);
     return total_sum;
 }
