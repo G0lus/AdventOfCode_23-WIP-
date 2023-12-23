@@ -13,8 +13,8 @@ add_executable(day01p02_test
 target_link_libraries(day01p01_test vector)
 target_link_libraries(day01p02_test vector)
 
-target_include_directories(day01p01_test PRIVATE ${CMAKE_SOURCE_DIR}/lib/Vector)
-target_include_directories(day01p02_test PRIVATE ${CMAKE_SOURCE_DIR}/lib/Vector)
+target_include_directories(day01p01_test PRIVATE ${CMAKE_SOURCE_DIR}/lib/vector)
+target_include_directories(day01p02_test PRIVATE ${CMAKE_SOURCE_DIR}/lib/vector)
 
 add_test(
     NAME "day01_test_part1" 

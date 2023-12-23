@@ -12,8 +12,8 @@ add_executable( day02
     ${PROJECT_SOURCE_DIR}/src/d02p1.c 
     ${PROJECT_SOURCE_DIR}/src/d02p2.c
 )
-target_link_libraries(day02 vector)
 
-target_include_directories(day02 PRIVATE ${CMAKE_SOURCE_DIR}/lib/Vector)
+target_include_directories(day02 PRIVATE ${CMAKE_SOURCE_DIR}/lib/vector)
+target_link_libraries(day02 vector)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/test)
