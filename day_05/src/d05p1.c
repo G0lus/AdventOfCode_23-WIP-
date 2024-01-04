@@ -133,18 +133,21 @@ static bool parse(const char* str, vector* seeds_vec, vector* maps_vector){
         static map* map = NULL;
         if(strchr(line, ':') != NULL){
             memset(line, 0, line_len);
+            map = calloc(1, sizeof(map));
             if(map != NULL){
                 vector_add(maps_vector, map);
-                printf("}\n");
+                // printf("}\n");
             }
-            printf("map{\n");
-            map = calloc(1, sizeof(map));
+            printf("Map calloc %p\n", map);
             map->maps = vector_init(16);
+            // printf("map %p{\n", map);
             continue;
         }
         single_map* sm = parse_map(line);
-        printf("\tsingle_map{start: %ld, end: %ld, delta: %ld}\n", sm->range.start, sm->range.end, sm->delta);
-        vector_add(map->maps, sm);
+        // printf("\tsingle_map %p{start: %ld, end: %ld, delta: %ld}\n", sm, sm->range.start, sm->range.end, sm->delta);
+        if(sm != NULL){
+            vector_add(map->maps, sm);
+        }
         memset(line, 0, line_len);
     }
 
@@ -196,6 +199,11 @@ size_t part1(size_t data_len, const char str[static data_len]){
 
     /** CLEANUP **/
     vector_deinit(seeds_vec);
+    for(size_t i = 0; i < vector_get_size(maps_vec); i++){
+        map* map_of_single_maps = vector_get(maps_vec, i);
+        vector_deinit(map_of_single_maps->maps);
+        printf("Free %p\n", map_of_single_maps);
+    }
     vector_deinit(maps_vec);
     /** CLEANUP **/
 
