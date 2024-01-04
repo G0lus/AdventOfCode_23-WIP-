@@ -138,7 +138,6 @@ static bool parse(const char* str, vector* seeds_vec, vector* maps_vector){
                 vector_add(maps_vector, map);
                 // printf("}\n");
             }
-            printf("Map calloc %p\n", map);
             map->maps = vector_init(16);
             // printf("map %p{\n", map);
             continue;
@@ -202,7 +201,6 @@ size_t part1(size_t data_len, const char str[static data_len]){
     for(size_t i = 0; i < vector_get_size(maps_vec); i++){
         map* map_of_single_maps = vector_get(maps_vec, i);
         vector_deinit(map_of_single_maps->maps);
-        printf("Free %p\n", map_of_single_maps);
     }
     vector_deinit(maps_vec);
     /** CLEANUP **/
