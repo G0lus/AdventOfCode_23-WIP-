@@ -48,22 +48,6 @@ static bool range_contains(range range, long value){
     return false;
 }
 
-static long maps_apply(map* maps, long value){
-    if(maps == NULL){
-        return -1;
-    }
-    for(size_t i = 0; i < vector_get_size(maps->maps); i++){
-        single_map* map = vector_get(maps->maps, i);
-        if(map != NULL){
-            if(range_contains(map->range, value)){
-                return value += map->delta;
-            }
-        }
-    }
-
-    return value;
-}
-
 static single_map* parse_map(const char* str){
     char* ptr_str = (char*) str;
     if(!isdigit(*ptr_str)){
