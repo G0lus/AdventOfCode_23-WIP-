@@ -10,10 +10,10 @@ add_executable(day05p02_test
 )
 
 target_link_libraries(day05p01_test vector)
-# target_link_libraries(day05p02_test vector)
+target_link_libraries(day05p02_test vector)
 
 target_include_directories(day05p01_test PRIVATE ${CMAKE_SOURCE_DIR}/lib/vector)
-# target_include_directories(day05p02_test PRIVATE ${CMAKE_SOURCE_DIR}/lib/vector)
+target_include_directories(day05p02_test PRIVATE ${CMAKE_SOURCE_DIR}/lib/vector)
 
 
 add_test(

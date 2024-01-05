@@ -4,15 +4,47 @@
 
 #include "d05.h"
 
-int main(int argc, char** argv){
     const char str[] = "\
-Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53\n\
-Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19\n\
-Card 3:  1 21 53 59 44 | 69 82 63 72 16 21 14  1\n\
-Card 4: 41 92 73 84 69 | 59 84 76 51 58  5 54 83\n\
-Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36\n\
-Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11";
-    __attribute_maybe_unused__ long int ret = part2(294, str);
-    // assert(ret == 467835);
-    return 0;
+seeds: 79 14 55 13\n\
+\n\
+seed-to-soil map:\n\
+50 98 2\n\
+52 50 48\n\
+\n\
+soil-to-fertilizer map:\n\
+0 15 37\n\
+37 52 2\n\
+39 0 15\n\
+\n\
+fertilizer-to-water map:\n\
+49 53 8\n\
+0 11 42\n\
+42 0 7\n\
+57 7 4\n\
+\n\
+water-to-light map:\n\
+88 18 7\n\
+18 25 70\n\
+\n\
+light-to-temperature map:\n\
+45 77 23\n\
+81 45 19\n\
+68 64 13\n\
+\n\
+temperature-to-humidity map:\n\
+0 69 1\n\
+1 0 69\n\
+\n\
+humidity-to-location map:\n\
+60 56 37\n\
+56 93 4";
+
+const size_t str_len = sizeof(str) / sizeof(char);
+
+int main(int argc, char** argv){
+    size_t ret = part2(str_len, str);
+    printf("ret %ld\n", ret);
+    assert(ret == 46);
+    
+    return EXIT_SUCCESS;
 }
