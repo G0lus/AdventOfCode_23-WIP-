@@ -11,9 +11,13 @@ add_executable(day06p02_test
 
 target_link_libraries(day06p01_test vector)
 target_link_libraries(day06p02_test vector)
+target_link_libraries(day06p01_test strutils)
+target_link_libraries(day06p02_test strutils)
 
 target_include_directories(day06p01_test PRIVATE ${CMAKE_SOURCE_DIR}/lib/vector)
 target_include_directories(day06p02_test PRIVATE ${CMAKE_SOURCE_DIR}/lib/vector)
+target_include_directories(day06p01_test PRIVATE ${CMAKE_SOURCE_DIR}/lib/strutils)
+target_include_directories(day06p02_test PRIVATE ${CMAKE_SOURCE_DIR}/lib/strutils)
 
 
 add_test(
