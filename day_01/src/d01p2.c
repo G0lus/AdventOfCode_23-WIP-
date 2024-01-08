@@ -5,7 +5,7 @@
 #include "d01.h"
 #include "vector.h"
 
-size_t part2(const char str[static 1]){
+size_t part2(size_t data_len, const char str[static data_len]){
     const char* numbers[] = {
         "zero", "one", "two", "three", "four", 
         "five", "six", "seven", "eight", "nine",

@@ -4,7 +4,8 @@
 #include "d01.h"
 #include "vector.h"
 
-size_t part1(const char str[static 1]){
+size_t part1(size_t data_len, const char str[static data_len]){
+
     vector* vec = vector_init(2);
     size_t count_digits = 0;
     char digits[2] = {'\0'};

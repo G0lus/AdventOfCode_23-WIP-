@@ -76,7 +76,8 @@ static size_t parse_line(char str[static 1], t_game* game){
 }
 
 
-size_t part2(const char str[static 1]){
+
+size_t part2(size_t data_len, const char str[static data_len]){
     vector* total_games = vector_init(128);
     
     if(total_games == NULL){
